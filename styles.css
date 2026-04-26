@@ -22,8 +22,8 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 12% 10%, rgba(179, 106, 46, 0.12), transparent 28rem),
-    linear-gradient(120deg, rgba(37, 95, 75, 0.08), transparent 36rem),
+    linear-gradient(120deg, rgba(37, 95, 75, 0.08), transparent 32rem),
+    linear-gradient(180deg, rgba(45, 95, 131, 0.07), transparent 38rem),
     var(--paper);
   color: var(--ink);
   font-family: Avenir Next, Helvetica Neue, Helvetica, sans-serif;
@@ -41,7 +41,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.2rem;
   min-height: 72px;
   padding: 0 5vw;
   border-bottom: 1px solid var(--line);
@@ -86,6 +86,42 @@ a {
 
 .nav a:hover {
   color: var(--ink);
+}
+
+.language-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  padding: 0.2rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 253, 248, 0.56);
+}
+
+.language-option {
+  min-width: 44px;
+  min-height: 32px;
+  padding: 0 0.7rem;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.language-option.is-active {
+  background: var(--ink);
+  color: var(--white);
+}
+
+.language-option:focus-visible,
+a:focus-visible,
+.button:focus-visible {
+  outline: 3px solid rgba(45, 95, 131, 0.34);
+  outline-offset: 3px;
 }
 
 main {
@@ -241,6 +277,27 @@ h1 {
   background: var(--line);
 }
 
+.note-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+
+.note-list span {
+  display: flex;
+  align-items: center;
+  min-height: 64px;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--line);
+  border-left: 4px solid var(--blue);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, 0.58);
+  color: #3d4642;
+  font-weight: 800;
+  line-height: 1.35;
+}
+
 .focus-item {
   min-height: 250px;
   padding: clamp(1.15rem, 3vw, 2rem);
@@ -261,8 +318,15 @@ h1 {
 
 .contact-body {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(260px, 0.5fr);
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.5fr);
   gap: 2rem;
+  align-items: start;
+}
+
+.contact-panel {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   align-items: start;
 }
 
@@ -281,6 +345,30 @@ h1 {
   background: rgba(255, 253, 248, 0.58);
   text-decoration: none;
   font-weight: 700;
+}
+
+.qr-block {
+  margin: 0;
+  padding: 0.8rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: rgba(255, 253, 248, 0.72);
+  width: min(220px, 100%);
+}
+
+.qr-block img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 1;
+  border-radius: 4px;
+}
+
+.qr-block figcaption {
+  margin-top: 0.65rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1.35;
 }
 
 .site-footer {
@@ -303,6 +391,10 @@ h1 {
   .nav {
     gap: 0.8rem;
     font-size: 0.86rem;
+  }
+
+  .language-switch {
+    margin-left: auto;
   }
 
   .brand-text {
@@ -341,6 +433,15 @@ h1 {
     grid-template-columns: 1fr;
   }
 
+  .note-list,
+  .contact-panel {
+    grid-template-columns: 1fr;
+  }
+
+  .qr-block {
+    width: min(260px, 100%);
+  }
+
   .focus-item {
     min-height: 190px;
   }
@@ -357,7 +458,17 @@ h1 {
   }
 
   .site-header {
+    flex-wrap: wrap;
+    align-content: center;
+    gap: 0.55rem 0.8rem;
+    min-height: 78px;
     padding: 0 1rem;
+  }
+
+  .nav {
+    order: 3;
+    width: 100%;
+    justify-content: space-between;
   }
 
   .hero {

@@ -1,13 +1,22 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta
+      id="meta-description"
       name="description"
-      content="Eason Ni 的个人主页，关注 AI 搜索推荐系统、产品理解与智能匹配。"
+      content="Eason Ni's personal homepage, focused on AI search, recommendation systems, product understanding, and useful intelligent workflows."
     />
     <meta name="theme-color" content="#f4f0e8" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://niyisen.com/" />
+    <meta property="og:title" content="Eason Ni | AI Search & Recommendation" />
+    <meta
+      property="og:description"
+      content="A compact home base for Eason Ni's work in AI search, recommendation systems, applied research, and product judgment."
+    />
+    <meta name="twitter:card" content="summary" />
     <title>Eason Ni | AI Search & Recommendation</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="./styles.css" />
@@ -19,23 +28,28 @@
         <span class="brand-text">Eason Ni</span>
       </a>
       <nav class="nav" aria-label="Primary navigation">
-        <a href="#about">About</a>
-        <a href="#work">Work</a>
-        <a href="#contact">Contact</a>
+        <a href="#about" data-i18n="nav.about">About</a>
+        <a href="#work" data-i18n="nav.work">Work</a>
+        <a href="#writing" data-i18n="nav.writing">Writing</a>
+        <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
+      <div class="language-switch" aria-label="Language switch">
+        <button type="button" class="language-option is-active" data-lang="en" aria-pressed="true">EN</button>
+        <button type="button" class="language-option" data-lang="zh" aria-pressed="false">中文</button>
+      </div>
     </header>
 
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow">AI Search & Recommendation Systems</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">AI Search & Recommendation Systems</p>
           <h1 id="hero-title">Eason Ni</h1>
-          <p class="hero-lead">
+          <p class="hero-lead" data-i18n="hero.lead">
             I study how AI systems understand intent, retrieve the right signals,
             and recommend what people actually need.
           </p>
           <div class="hero-actions" aria-label="Primary links">
-            <a class="button primary" href="#work">View Focus</a>
+            <a class="button primary" href="#work" data-i18n="hero.primaryAction">View Focus</a>
             <a class="button secondary" href="https://github.com/Eason-Ni" target="_blank" rel="noreferrer">
               GitHub
             </a>
@@ -45,18 +59,18 @@
         <div class="signal-panel" aria-label="Animated search and recommendation map">
           <canvas id="signalCanvas" width="720" height="720"></canvas>
           <div class="signal-caption">
-            <span>Intent</span>
-            <span>Retrieval</span>
-            <span>Ranking</span>
+            <span data-i18n="signal.intent">Intent</span>
+            <span data-i18n="signal.retrieval">Retrieval</span>
+            <span data-i18n="signal.ranking">Ranking</span>
           </div>
         </div>
       </section>
 
       <section id="about" class="section about" aria-labelledby="about-title">
-        <div class="section-label">About</div>
+        <div class="section-label" data-i18n="about.label">About</div>
         <div class="section-body">
-          <h2 id="about-title">I am Eason, focused on AI-powered search and recommendation.</h2>
-          <p>
+          <h2 id="about-title" data-i18n="about.title">I am Eason, focused on AI-powered search and recommendation.</h2>
+          <p data-i18n="about.body">
             My work sits at the intersection of user understanding, item understanding,
             matching, ranking, and product judgment. I care about systems that are useful
             in real workflows, not just impressive in isolated demos.
@@ -65,42 +79,64 @@
       </section>
 
       <section id="work" class="section work" aria-labelledby="work-title">
-        <div class="section-label">Focus</div>
+        <div class="section-label" data-i18n="work.label">Selected Work</div>
         <div class="section-body">
-          <h2 id="work-title">Current directions</h2>
+          <h2 id="work-title" data-i18n="work.title">Current directions</h2>
           <div class="focus-grid">
             <article class="focus-item">
               <span class="focus-index">01</span>
-              <h3>AI Search</h3>
-              <p>Query understanding, retrieval quality, multimodal search, and evaluation loops.</p>
+              <h3 data-i18n="work.item1.title">AI Search</h3>
+              <p data-i18n="work.item1.body">Query understanding, retrieval quality, multimodal search, and evaluation loops.</p>
             </article>
             <article class="focus-item">
               <span class="focus-index">02</span>
-              <h3>Recommendation</h3>
-              <p>User intent, product signals, content distribution, and ranking mechanisms.</p>
+              <h3 data-i18n="work.item2.title">Recommendation</h3>
+              <p data-i18n="work.item2.body">User intent, product signals, content distribution, and ranking mechanisms.</p>
             </article>
             <article class="focus-item">
               <span class="focus-index">03</span>
-              <h3>Applied Research</h3>
-              <p>Turning research questions into usable workflows, reports, and product decisions.</p>
+              <h3 data-i18n="work.item3.title">Applied Research</h3>
+              <p data-i18n="work.item3.body">Turning research questions into usable workflows, reports, and product decisions.</p>
             </article>
           </div>
         </div>
       </section>
 
+      <section id="writing" class="section writing" aria-labelledby="writing-title">
+        <div class="section-label" data-i18n="writing.label">Writing</div>
+        <div class="section-body">
+          <h2 id="writing-title" data-i18n="writing.title">Notes to make the work reusable.</h2>
+          <p data-i18n="writing.body">
+            I use this site as a public index for research notes, project summaries,
+            and small demos around AI search, recommendation, product intelligence, and agent workflows.
+          </p>
+          <div class="note-list" aria-label="Writing topics">
+            <span data-i18n="writing.topic1">AI search and retrieval quality</span>
+            <span data-i18n="writing.topic2">Recommendation system product judgment</span>
+            <span data-i18n="writing.topic3">Applied research workflows</span>
+          </div>
+        </div>
+      </section>
+
       <section id="contact" class="section contact" aria-labelledby="contact-title">
-        <div class="section-label">Contact</div>
+        <div class="section-label" data-i18n="contact.label">Contact</div>
         <div class="section-body contact-body">
           <div>
-            <h2 id="contact-title">Find me online</h2>
-            <p>
+            <h2 id="contact-title" data-i18n="contact.title">Find me online</h2>
+            <p data-i18n="contact.body">
               I keep this page as a compact home base for research notes, projects,
               and public links.
             </p>
           </div>
-          <div class="contact-links">
-            <a href="https://github.com/Eason-Ni" target="_blank" rel="noreferrer">GitHub: Eason-Ni</a>
-            <span>公众号：学习的一天天</span>
+          <div class="contact-panel">
+            <div class="contact-links">
+              <a href="https://github.com/Eason-Ni" target="_blank" rel="noreferrer">GitHub: Eason-Ni</a>
+              <span data-i18n="contact.wechatName">WeChat Official Account: 学习的一天天</span>
+            </div>
+            <figure class="qr-block">
+              <img src="./assets/wechat-official-account-qr.jpeg" alt="WeChat Official Account QR code for 学习的一天天" />
+              <figcaption data-i18n="contact.qrCaption">Scan to follow my WeChat official account.</figcaption>
+            </figure>
           </div>
         </div>
       </section>
@@ -108,7 +144,7 @@
 
     <footer class="site-footer">
       <span>© <span id="year"></span> Eason Ni</span>
-      <span>Built as a static personal homepage.</span>
+      <span data-i18n="footer.note">Built as a static personal homepage.</span>
     </footer>
 
     <script src="./script.js"></script>
