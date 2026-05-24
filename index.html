@@ -6,9 +6,9 @@
     <meta
       id="meta-description"
       name="description"
-      content="Eason Ni's personal homepage, focused on AI search, recommendation systems, product understanding, and useful intelligent workflows."
+      content="Eason Ni's personal homepage for AI search, recommendation systems, applied research, and reusable intelligent workflows."
     />
-    <meta name="theme-color" content="#f4f0e8" />
+    <meta name="theme-color" content="#0c0d0b" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://niyisen.com/" />
     <meta property="og:title" content="Eason Ni | AI Search & Recommendation" />
@@ -19,6 +19,7 @@
     <meta name="twitter:card" content="summary" />
     <title>Eason Ni | AI Search & Recommendation</title>
     <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://github.com" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -30,7 +31,8 @@
       <nav class="nav" aria-label="Primary navigation">
         <a href="#about" data-i18n="nav.about">About</a>
         <a href="#work" data-i18n="nav.work">Work</a>
-        <a href="#writing" data-i18n="nav.writing">Writing</a>
+        <a href="#method" data-i18n="nav.method">Method</a>
+        <a href="#writing" data-i18n="nav.writing">Notes</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
       <div class="language-switch" aria-label="Language switch">
@@ -42,74 +44,138 @@
     <main id="top">
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">AI Search & Recommendation Systems</p>
+          <p class="eyebrow" data-i18n="hero.eyebrow">AI Search / Recommendation / Product Intelligence</p>
           <h1 id="hero-title">Eason Ni</h1>
           <p class="hero-lead" data-i18n="hero.lead">
-            I study how AI systems understand intent, retrieve the right signals,
-            and recommend what people actually need.
+            I turn messy intent, product signals, and research questions into search and recommendation systems people can actually use.
           </p>
+          <div class="hero-tags" aria-label="Primary focus tags">
+            <span data-i18n="hero.tag1">Query understanding</span>
+            <span data-i18n="hero.tag2">Retrieval quality</span>
+            <span data-i18n="hero.tag3">Ranking judgment</span>
+            <span data-i18n="hero.tag4">Reusable workflows</span>
+          </div>
           <div class="hero-actions" aria-label="Primary links">
             <a class="button primary" href="#work" data-i18n="hero.primaryAction">View Focus</a>
-            <a class="button secondary" href="https://github.com/Eason-Ni" target="_blank" rel="noreferrer">
-              GitHub
-            </a>
+            <a class="button secondary" href="#contact" data-i18n="hero.secondaryAction">Find Me</a>
           </div>
         </div>
 
-        <div class="signal-panel" aria-label="Animated search and recommendation map">
-          <canvas id="signalCanvas" width="720" height="720"></canvas>
-          <div class="signal-caption">
-            <span data-i18n="signal.intent">Intent</span>
-            <span data-i18n="signal.retrieval">Retrieval</span>
-            <span data-i18n="signal.ranking">Ranking</span>
+        <aside class="hero-visual" aria-label="Profile visual summary">
+          <div class="visual-frame" aria-hidden="true"></div>
+          <figure class="portrait-card">
+            <img src="https://github.com/Eason-Ni.png?size=360" alt="Eason Ni GitHub profile avatar" />
+            <figcaption>
+              <strong>Eason Ni</strong>
+              <span data-i18n="visual.caption">AI systems, product judgment, reusable notes.</span>
+            </figcaption>
+          </figure>
+          <div class="signal-card">
+            <span class="signal-kicker" data-i18n="visual.kicker">Current Loop</span>
+            <ol>
+              <li data-i18n="visual.step1">Understand intent</li>
+              <li data-i18n="visual.step2">Retrieve signals</li>
+              <li data-i18n="visual.step3">Rank decisions</li>
+              <li data-i18n="visual.step4">Distill notes</li>
+            </ol>
           </div>
-        </div>
+          <p class="vertical-rail" data-i18n="visual.rail">Intent -> Signal -> Decision -> Knowledge</p>
+        </aside>
       </section>
 
-      <section id="about" class="section about" aria-labelledby="about-title">
+      <section id="about" class="section intro-section" aria-labelledby="about-title">
         <div class="section-label" data-i18n="about.label">About</div>
-        <div class="section-body">
-          <h2 id="about-title" data-i18n="about.title">I am Eason, focused on AI-powered search and recommendation.</h2>
-          <p data-i18n="about.body">
-            My work sits at the intersection of user understanding, item understanding,
-            matching, ranking, and product judgment. I care about systems that are useful
-            in real workflows, not just impressive in isolated demos.
-          </p>
+        <div class="section-body intro-grid">
+          <div>
+            <h2 id="about-title" data-i18n="about.title">A practical research home base for AI-powered discovery.</h2>
+            <p data-i18n="about.body">
+              My work sits between user understanding, item understanding, matching, ranking, and product judgment.
+              I care about systems that improve real workflows, not isolated demos that look clever once.
+            </p>
+          </div>
+          <div class="proof-list" aria-label="Working principles">
+            <article>
+              <span>01</span>
+              <h3 data-i18n="about.proof1.title">Business questions first</h3>
+              <p data-i18n="about.proof1.body">Start from the decision, then map data, model, evaluation, and UX.</p>
+            </article>
+            <article>
+              <span>02</span>
+              <h3 data-i18n="about.proof2.title">Evidence over slogans</h3>
+              <p data-i18n="about.proof2.body">Keep source notes, bad cases, and reusable checklists close to the work.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section id="work" class="section work" aria-labelledby="work-title">
+      <section id="work" class="section work-section" aria-labelledby="work-title">
         <div class="section-label" data-i18n="work.label">Selected Work</div>
         <div class="section-body">
-          <h2 id="work-title" data-i18n="work.title">Current directions</h2>
+          <div class="section-heading">
+            <h2 id="work-title" data-i18n="work.title">Three directions I keep building around.</h2>
+            <p data-i18n="work.body">
+              Each direction combines research, product analysis, and small runnable workflows.
+            </p>
+          </div>
           <div class="focus-grid">
             <article class="focus-item">
               <span class="focus-index">01</span>
               <h3 data-i18n="work.item1.title">AI Search</h3>
-              <p data-i18n="work.item1.body">Query understanding, retrieval quality, multimodal search, and evaluation loops.</p>
+              <p data-i18n="work.item1.body">Query understanding, multimodal retrieval, ranking evaluation, and search-result quality loops.</p>
             </article>
             <article class="focus-item">
               <span class="focus-index">02</span>
               <h3 data-i18n="work.item2.title">Recommendation</h3>
-              <p data-i18n="work.item2.body">User intent, product signals, content distribution, and ranking mechanisms.</p>
+              <p data-i18n="work.item2.body">User intent, content and product signals, distribution mechanics, and recommendation product judgment.</p>
             </article>
             <article class="focus-item">
               <span class="focus-index">03</span>
               <h3 data-i18n="work.item3.title">Applied Research</h3>
-              <p data-i18n="work.item3.body">Turning research questions into usable workflows, reports, and product decisions.</p>
+              <p data-i18n="work.item3.body">Turning research questions into structured notes, project plans, demos, and decision-ready summaries.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="writing" class="section writing" aria-labelledby="writing-title">
-        <div class="section-label" data-i18n="writing.label">Writing</div>
+      <section id="method" class="section method-section" aria-labelledby="method-title">
+        <div class="section-label" data-i18n="method.label">Method</div>
         <div class="section-body">
-          <h2 id="writing-title" data-i18n="writing.title">Notes to make the work reusable.</h2>
-          <p data-i18n="writing.body">
-            I use this site as a public index for research notes, project summaries,
-            and small demos around AI search, recommendation, product intelligence, and agent workflows.
-          </p>
+          <div class="section-heading">
+            <h2 id="method-title" data-i18n="method.title">The operating loop</h2>
+            <p data-i18n="method.body">
+              A lightweight loop for moving from ambiguous product questions to reusable knowledge.
+            </p>
+          </div>
+          <ol class="timeline">
+            <li>
+              <span data-i18n="method.step1.kicker">Explore</span>
+              <strong data-i18n="method.step1.title">Clarify the intent</strong>
+              <p data-i18n="method.step1.body">Define the user need, product context, and evidence needed to judge quality.</p>
+            </li>
+            <li>
+              <span data-i18n="method.step2.kicker">Build</span>
+              <strong data-i18n="method.step2.title">Connect signals</strong>
+              <p data-i18n="method.step2.body">Map queries, items, content, models, and evaluation into a system view.</p>
+            </li>
+            <li>
+              <span data-i18n="method.step3.kicker">Distill</span>
+              <strong data-i18n="method.step3.title">Make it reusable</strong>
+              <p data-i18n="method.step3.body">Keep the output readable: notes, demos, checklists, and next-step decisions.</p>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section id="writing" class="section writing-section" aria-labelledby="writing-title">
+        <div class="section-label" data-i18n="writing.label">Notes</div>
+        <div class="section-body writing-grid">
+          <div>
+            <h2 id="writing-title" data-i18n="writing.title">Notes that make the work easier to reopen.</h2>
+            <p data-i18n="writing.body">
+              This site is a public index for research notes, project summaries, and small demos around AI search,
+              recommendation, product intelligence, and agent workflows.
+            </p>
+          </div>
           <div class="note-list" aria-label="Writing topics">
             <span data-i18n="writing.topic1">AI search and retrieval quality</span>
             <span data-i18n="writing.topic2">Recommendation system product judgment</span>
@@ -118,33 +184,31 @@
         </div>
       </section>
 
-      <section id="contact" class="section contact" aria-labelledby="contact-title">
+      <section id="contact" class="section contact-section" aria-labelledby="contact-title">
         <div class="section-label" data-i18n="contact.label">Contact</div>
         <div class="section-body contact-body">
           <div>
-            <h2 id="contact-title" data-i18n="contact.title">Find me online</h2>
+            <h2 id="contact-title" data-i18n="contact.title">The fastest way to find me.</h2>
             <p data-i18n="contact.body">
-              I keep this page as a compact home base for research notes, projects,
-              and public links.
+              Reach out if the topic is AI search, recommendation systems, product understanding, applied research,
+              or practical knowledge workflows.
             </p>
-          </div>
-          <div class="contact-panel">
             <div class="contact-links">
               <a href="https://github.com/Eason-Ni" target="_blank" rel="noreferrer">GitHub: Eason-Ni</a>
               <span data-i18n="contact.wechatName">WeChat Official Account: 学习的一天天</span>
             </div>
-            <figure class="qr-block">
-              <img src="./assets/wechat-official-account-qr.jpeg" alt="WeChat Official Account QR code for 学习的一天天" />
-              <figcaption data-i18n="contact.qrCaption">Scan to follow my WeChat official account.</figcaption>
-            </figure>
           </div>
+          <figure class="qr-block">
+            <img src="./assets/wechat-official-account-qr.jpeg" alt="WeChat Official Account QR code for 学习的一天天" />
+            <figcaption data-i18n="contact.qrCaption">Scan to follow my WeChat official account.</figcaption>
+          </figure>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <span>© <span id="year"></span> Eason Ni</span>
-      <span data-i18n="footer.note">Built as a static personal homepage.</span>
+      <span data-i18n="footer.note">Static homepage. Built for clarity and reuse.</span>
     </footer>
 
     <script src="./script.js"></script>
