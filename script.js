@@ -4,6 +4,10 @@ const translatableNodes = document.querySelectorAll("[data-i18n]");
 const descriptionMeta = document.querySelector("#meta-description");
 const ogDescriptionMeta = document.querySelector('meta[property="og:description"]');
 const ogTitleMeta = document.querySelector('meta[property="og:title"]');
+const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+const themeButtons = document.querySelectorAll("[data-theme-choice]");
+const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const THEME_STORAGE_KEY = "eason-homepage-theme";
 
 year.textContent = new Date().getFullYear();
 
@@ -18,6 +22,11 @@ const translations = {
       method: "Method",
       writing: "Notes",
       contact: "Contact",
+    },
+    theme: {
+      system: "System",
+      light: "Light",
+      dark: "Dark",
     },
     hero: {
       eyebrow: "AI Search / Recommendation / Product Intelligence",
@@ -121,6 +130,11 @@ const translations = {
       writing: "笔记",
       contact: "联系",
     },
+    theme: {
+      system: "跟随系统",
+      light: "日间模式",
+      dark: "夜间模式",
+    },
     hero: {
       eyebrow: "AI 搜索 / 推荐系统 / 产品智能化",
       lead: "我把复杂的意图、商品信号和研究问题，整理成真正能被使用的搜索与推荐系统。",
@@ -213,9 +227,42 @@ const translations = {
 };
 
 let currentLanguage = "en";
+let currentThemePreference = getStoredThemePreference();
 
 function getNestedValue(source, path) {
   return path.split(".").reduce((value, key) => value?.[key], source);
+}
+
+function getStoredThemePreference() {
+  const storedValue = window.localStorage.getItem(THEME_STORAGE_KEY);
+  return ["system", "light", "dark"].includes(storedValue) ? storedValue : "system";
+}
+
+function getResolvedTheme(preference) {
+  if (preference === "light" || preference === "dark") {
+    return preference;
+  }
+
+  return systemThemeQuery.matches ? "dark" : "light";
+}
+
+function applyThemePreference(preference, options = { persist: true }) {
+  currentThemePreference = ["system", "light", "dark"].includes(preference) ? preference : "system";
+  const resolvedTheme = getResolvedTheme(currentThemePreference);
+
+  document.documentElement.dataset.themePreference = currentThemePreference;
+  document.documentElement.dataset.theme = resolvedTheme;
+  themeColorMeta.setAttribute("content", resolvedTheme === "dark" ? "#0c0d0b" : "#f5f0e7");
+
+  if (options.persist) {
+    window.localStorage.setItem(THEME_STORAGE_KEY, currentThemePreference);
+  }
+
+  themeButtons.forEach((button) => {
+    const isActive = button.dataset.themeChoice === currentThemePreference;
+    button.classList.toggle("is-active", isActive);
+    button.setAttribute("aria-pressed", String(isActive));
+  });
 }
 
 function applyLanguage(language) {
@@ -241,10 +288,23 @@ function applyLanguage(language) {
   });
 }
 
+applyThemePreference(currentThemePreference, { persist: false });
 applyLanguage(currentLanguage);
 
 languageButtons.forEach((button) => {
   button.addEventListener("click", () => {
     applyLanguage(button.dataset.lang);
   });
+});
+
+themeButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    applyThemePreference(button.dataset.themeChoice);
+  });
+});
+
+systemThemeQuery.addEventListener("change", () => {
+  if (currentThemePreference === "system") {
+    applyThemePreference("system", { persist: false });
+  }
 });

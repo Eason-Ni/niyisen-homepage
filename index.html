@@ -35,9 +35,16 @@
         <a href="#writing" data-i18n="nav.writing">Notes</a>
         <a href="#contact" data-i18n="nav.contact">Contact</a>
       </nav>
-      <div class="language-switch" aria-label="Language switch">
-        <button type="button" class="language-option is-active" data-lang="en" aria-pressed="true">EN</button>
-        <button type="button" class="language-option" data-lang="zh" aria-pressed="false">中文</button>
+      <div class="header-controls">
+        <div class="language-switch segmented-control" aria-label="Language switch">
+          <button type="button" class="language-option is-active" data-lang="en" aria-pressed="true">EN</button>
+          <button type="button" class="language-option" data-lang="zh" aria-pressed="false">中文</button>
+        </div>
+        <div class="theme-switch segmented-control" aria-label="Theme switch">
+          <button type="button" class="theme-option is-active" data-theme-choice="system" data-i18n="theme.system" aria-pressed="true">System</button>
+          <button type="button" class="theme-option" data-theme-choice="light" data-i18n="theme.light" aria-pressed="false">Light</button>
+          <button type="button" class="theme-option" data-theme-choice="dark" data-i18n="theme.dark" aria-pressed="false">Dark</button>
+        </div>
       </div>
     </header>
 
