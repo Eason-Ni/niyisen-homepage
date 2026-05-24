@@ -6,10 +6,21 @@ const ogDescriptionMeta = document.querySelector('meta[property="og:description"
 const ogTitleMeta = document.querySelector('meta[property="og:title"]');
 const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 const themeButtons = document.querySelectorAll("[data-theme-choice]");
+const progressBar = document.querySelector(".progress");
+const heroVisual = document.querySelector(".hero-visual");
+const revealItems = document.querySelectorAll(".hero-copy, .hero-visual, .focus-item, .timeline li, .note-list span, .qr-block, .site-footer");
+const motionSections = document.querySelectorAll(".section");
 const systemThemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+const reduceMotionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+const desktopMotionQuery = window.matchMedia("(min-width: 901px)");
 const THEME_STORAGE_KEY = "eason-homepage-theme";
 
+document.documentElement.classList.add("js");
 year.textContent = new Date().getFullYear();
+
+let mouseFrame = null;
+let heroX = 0;
+let heroY = 0;
 
 const translations = {
   en: {
@@ -308,3 +319,101 @@ systemThemeQuery.addEventListener("change", () => {
     applyThemePreference("system", { persist: false });
   }
 });
+
+function updateScrollProgress() {
+  if (!progressBar) {
+    return;
+  }
+
+  const scrollTop = window.scrollY || document.documentElement.scrollTop;
+  const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+  const percent = maxScroll > 0 ? (scrollTop / maxScroll) * 100 : 0;
+  progressBar.style.width = `${Math.min(100, Math.max(0, percent))}%`;
+
+  if (heroVisual && desktopMotionQuery.matches && !reduceMotionQuery.matches) {
+    heroVisual.style.setProperty("--portrait-shift", `${scrollTop * -0.025}px`);
+  }
+}
+
+function applyHeroDrift() {
+  mouseFrame = null;
+
+  if (!heroVisual || !desktopMotionQuery.matches || reduceMotionQuery.matches) {
+    return;
+  }
+
+  heroVisual.style.setProperty("--hero-x", `${heroX}px`);
+  heroVisual.style.setProperty("--hero-y", `${heroY}px`);
+}
+
+function handlePointerMove(event) {
+  if (!heroVisual || !desktopMotionQuery.matches || reduceMotionQuery.matches) {
+    return;
+  }
+
+  const halfWidth = window.innerWidth / 2;
+  const halfHeight = window.innerHeight / 2;
+  heroX = ((event.clientX - halfWidth) / halfWidth) * 7;
+  heroY = ((event.clientY - halfHeight) / halfHeight) * 9;
+
+  if (!mouseFrame) {
+    mouseFrame = window.requestAnimationFrame(applyHeroDrift);
+  }
+}
+
+function resetHeroDrift() {
+  heroX = 0;
+  heroY = 0;
+  applyHeroDrift();
+}
+
+revealItems.forEach((item) => item.classList.add("reveal"));
+motionSections.forEach((section) => section.classList.add("motion-section"));
+
+if ("IntersectionObserver" in window && !reduceMotionQuery.matches) {
+  const revealObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.12,
+      rootMargin: "0px 0px -8% 0px",
+    },
+  );
+
+  revealItems.forEach((item, index) => {
+    item.style.transitionDelay = `${Math.min(index * 38, 220)}ms`;
+    revealObserver.observe(item);
+  });
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("section-in-view");
+          sectionObserver.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.14,
+      rootMargin: "0px 0px -12% 0px",
+    },
+  );
+
+  motionSections.forEach((section) => sectionObserver.observe(section));
+} else {
+  revealItems.forEach((item) => item.classList.add("in-view"));
+  motionSections.forEach((section) => section.classList.add("section-in-view"));
+}
+
+window.addEventListener("scroll", updateScrollProgress, { passive: true });
+window.addEventListener("resize", updateScrollProgress);
+window.addEventListener("pointermove", handlePointerMove, { passive: true });
+window.addEventListener("pointerleave", resetHeroDrift);
+updateScrollProgress();
