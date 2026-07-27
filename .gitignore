@@ -15,6 +15,12 @@ id_ed25519
 .DS_Store
 *.log
 *.local
+node_modules/
+dist/
+.next/
+.wrangler/
+.open-next/
+out/
 local-notes/
 private-notes/
 TODO.md
