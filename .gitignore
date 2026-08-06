@@ -25,3 +25,7 @@ local-notes/
 private-notes/
 TODO.md
 docs/research/
+
+__pycache__/
+*.pyc
+tmp/

@@ -1,3 +1,10 @@
+---
+title: "倪弋森个人主页"
+status: active
+updated: 2026-08-06
+doc_type: index
+---
+
 # Eason Ni Personal Homepage
 
 Static personal homepage for `niyisen.com`.
