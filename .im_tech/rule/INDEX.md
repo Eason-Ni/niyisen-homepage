@@ -3,7 +3,7 @@
 ## [always]
 
 - 根入口：`../../AGENTS.md`
-- 当前待办：`../planning/TODO.md`
+- 当前待办：`../plan/TODO.md`
 
 ## 边界
 
