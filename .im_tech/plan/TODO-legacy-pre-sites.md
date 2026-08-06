@@ -27,7 +27,7 @@
 4. [已完成] 基于松月个人网站做内部参考拆解并优化主页
    - 目标：把参考站拆解沉淀到 `docs/research/`，但不接入公开页面；同时优化 Eason 主页首屏、内容结构和联系路径。
    - 验证：本地预览桌面和移动端、语言切换、链接、控制台和基础敏感信息扫描。
-   - 产物：`docs/research/songyue-personal-site-reference-2026-05-24.md`、`docs/specs/2026-05-24-songyue-reference-homepage-refresh.md`。
+   - 产物：`docs/research/songyue-personal-site-reference-2026-05-24.md`、`docs/spec/2026-05-24-songyue-reference-homepage-refresh.md`。
 
 ## P1：让主页从“骨架”变成“能介绍你”的页面
 
